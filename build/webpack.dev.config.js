@@ -14,7 +14,7 @@ module.exports = {
     devtool: "inline-source-map",
     entry: [
         "webpack-dev-server/client?http://localhost:5000/",
-        "./src/app.js"
+        "./src/js/app.js"
     ],
     output: {
         path: path.join(process.cwd(), "public"),
