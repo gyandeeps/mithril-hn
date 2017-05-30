@@ -1,0 +1,42 @@
+{
+  "name": "mithril-hn",
+  "version": "0.1.0",
+  "description": "HN using MithrilJs",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config ./build/webpack.config.js",
+    "dev": "node ./build/webpack-dev-server.js",
+    "start": "node ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gyandeeps/mithril-hn.git"
+  },
+  "keywords": [
+    "mithril"
+  ],
+  "author": "Gyandeep Singh <gyandeeps@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gyandeeps/mithril-hn/issues"
+  },
+  "homepage": "https://github.com/gyandeeps/mithril-hn#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mithril": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-babili": "^0.1.2",
+    "babel-preset-env": "^1.5.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
