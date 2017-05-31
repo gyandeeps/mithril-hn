@@ -9,12 +9,12 @@ const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 
-const extractCSS = new ExtractTextPlugin("./public/app.css");
+const extractCSS = new ExtractTextPlugin("./app.css");
 
 module.exports = () => {
     return {
         entry: {
-            "app": "./src/js/app.js",
+            "app": "./src/js/app.js"
         },
         output: {
             path: path.resolve(__dirname, "../public"),

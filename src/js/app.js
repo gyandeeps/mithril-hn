@@ -6,6 +6,7 @@
 "use strict";
 
 import m from "mithril";
+import "../less/app.less";
 
 class ES6ClassComponent {
     constructor(vnode) {
@@ -13,7 +14,13 @@ class ES6ClassComponent {
         this.kind = "ES6 class"
     }
     view() {
-        return m("div", `Hello from an ${this.kind}`)
+        return m(
+            "div",
+            {
+                class: "mithril-hn"
+            },
+            `Hello from an ${this.kind}`
+        );
     }
     oncreate() {
         console.log(`A ${this.kind} component was created`)
