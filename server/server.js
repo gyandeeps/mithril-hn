@@ -7,6 +7,7 @@
 
 const express = require("express");
 const path = require("path");
+const { fetchItem, fetchNews } = require("./fetch-data");
 
 const app = express();
 
@@ -17,6 +18,15 @@ app.use(express.static(path.resolve(process.cwd(), "./public")));
 app.get("/", (req, res) => {
     res.sendFile("./public/index.html");
 });
+
+app.get("/news", (req, res) =>
+    fetchNews(req.query.page)
+        .then((data) => res.json(data))
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send(err.message);
+        })
+);
 
 app.listen(app.get("port"), (err) => {
     if (err) {
