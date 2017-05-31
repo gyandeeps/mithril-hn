@@ -10,7 +10,7 @@ const webpack = require("webpack");
 const config = require("./webpack.dev.config.js");
 
 const compiler = webpack(config);
-const port = Number(process.env.PORT || 5000);
+const port = Number(process.env.PORT || 3000);
 
 const server = new WebpackDevServer(compiler, {
     publicPath: config.output.publicPath,
@@ -18,8 +18,12 @@ const server = new WebpackDevServer(compiler, {
     noInfo: true,
     disableHostCheck: true,
     overlay: true,
-    contentBase: "./public"
+    contentBase: "./public",
+    proxy: {
+        "/news": {
+            target: "http://localhost:5000",
+            secure: false
+        }
+    }
 });
-server.listen(port, () => {
-    console.log(`Server started. Please go to http://localhost:${port}`);
-});
+server.listen(port, () => console.log(`Server started. Please go to http://localhost:${port}`));

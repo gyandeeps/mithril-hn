@@ -13,7 +13,7 @@ const webpack = require("webpack");
 module.exports = {
     devtool: "inline-source-map",
     entry: [
-        "webpack-dev-server/client?http://localhost:5000/",
+        "webpack-dev-server/client?http://localhost:3000/",
         "./src/js/app.js"
     ],
     output: {

@@ -15,11 +15,11 @@ app.set("port", process.env.PORT || 5000);
 app.use(express.static(path.resolve(process.cwd(), "./public")));
 
 // main/homepage
-app.get("/", (req, res) => {
-    res.sendFile("./public/index.html");
+app.get(["/", "/new/:id"], (req, res) => {
+    res.sendFile(path.join(process.cwd(), "./public/index.html"));
 });
 
-app.get("/news", (req, res) =>
+app.get("/api/new", (req, res) =>
     fetchNews(req.query.page)
         .then((data) => res.json(data))
         .catch((err) => {

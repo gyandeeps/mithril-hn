@@ -5,28 +5,39 @@
 
 "use strict";
 
-import m from "mithril";
+import route from "mithril/route";
+import m from "mithril/hyperscript";
+import Header from "./components/Header";
+import Body from "./components/Body";
 import "../less/app.less";
 
-class ES6ClassComponent {
+class App {
     constructor(vnode) {
         // vnode.state is undefined at this point
-        this.kind = "ES6 class"
+        this.kind = "App"
     }
-    view() {
+    view(vnode) {
         return m(
             "div",
             {
                 class: "mithril-hn"
             },
-            `Hello from an ${this.kind}`
+            [
+
+                m(Header, {
+                    currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1
+                }),
+                m(Body, {
+                    currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1
+                })
+            ]
         );
-    }
-    oncreate() {
-        console.log(`A ${this.kind} component was created`)
     }
 }
 
-m.route(document.getElementById("app"), "/", {
-    "/": ES6ClassComponent
+route.prefix("");
+route(document.getElementById("app"), "/", {
+    "/": App,
+    "/new/:id": App,
+    "/comments": App
 });
