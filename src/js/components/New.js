@@ -1,15 +1,14 @@
 import m from "mithril/hyperscript";
 import { redraw } from "mithril/redraw";
 import Item from "./Item";
-import { getNew } from "../data/fetch-data";
 
 export default class New {
     constructor() {
         this.items = [];
     }
 
-    _getData() {
-        getNew(this.currentPage)
+    _getData(fetchFunc) {
+        fetchFunc(this.currentPage)
             .then((data) => {
                 this.items = data;
                 this.newData = true;
@@ -19,30 +18,25 @@ export default class New {
 
     oninit(vnode) {
         this.currentPage = vnode.attrs.currentPage;
-        this._getData();
+        this.dataFetchFunc = vnode.attrs.fetchData;
+        this._getData(this.dataFetchFunc);
     }
 
     onupdate(vnode) {
-        if (vnode.attrs.currentPage !== this.currentPage) {
+        if (vnode.attrs.currentPage !== this.currentPage || vnode.attrs.fetchData !== this.dataFetchFunc) {
             this.items = [];
             this.currentPage = vnode.attrs.currentPage;
-            this._getData();
+            this.dataFetchFunc = vnode.attrs.fetchData;
+            this._getData(this.dataFetchFunc);
         }
-    }
-
-    onbeforeupdate(vnode) {
-        if (vnode.attrs.currentPage === this.currentPage && !this.newData) {
-            this.newData = false;
-            return false;
-        }
-        return true;
     }
 
     view(vnode) {
         return m(
             "div",
             {
-                class: "mithril-New"
+                class: "mithril-New",
+                key: vnode.attrs.routeName
             },
             this.items.map((item, id) => m(Item, {
                 id: ((this.currentPage - 1) * 30) + id + 1,
@@ -50,6 +44,8 @@ export default class New {
                 link: item.url,
                 title: item.title,
                 user: item.user,
+                points: item.points,
+                timeAgo: item.time_ago,
                 comments: item.comments_count
             }))
         );

@@ -40,16 +40,16 @@ export default class Item {
                                 class: "mithril-Item-footer"
                             },
                             [
-                                " test ",
+                                ` ${vnode.attrs.points} points `,
                                 m(
                                     "a",
                                     {
                                         class: "mithril-Item-user",
                                         href: vnode.attrs.user
                                     },
-                                    "user"
+                                    vnode.attrs.user
                                 ),
-                                " test 2 ",
+                                ` ${vnode.attrs.timeAgo} `,
                                 m(
                                     "span",
                                     {},

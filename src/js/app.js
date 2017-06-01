@@ -12,10 +12,6 @@ import Body from "./components/Body";
 import "../less/app.less";
 
 class App {
-    constructor(vnode) {
-        // vnode.state is undefined at this point
-        this.kind = "App"
-    }
     view(vnode) {
         return m(
             "div",
@@ -36,8 +32,13 @@ class App {
 }
 
 route.prefix("");
-route(document.getElementById("app"), "/", {
-    "/": App,
+route(document.getElementById("app"), "/new", {
+    "/new": App,
     "/new/:id": App,
-    "/comments": App
+    "/show": App,
+    "/show/:id": App,
+    "/ask": App,
+    "/ask/:id": App,
+    "/jobs": App,
+    "/jobs/:id": App,
 });

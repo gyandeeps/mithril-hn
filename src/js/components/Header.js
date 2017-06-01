@@ -1,7 +1,7 @@
 import m from "mithril/hyperscript";
 import route from "mithril/route";
 
-const createLink = (name, nestedRoute, children) => m(
+const createLink = (name, nestedRoute = "", children) => m(
     "li",
     {
         class: "mithril-nav-item"
@@ -10,7 +10,7 @@ const createLink = (name, nestedRoute, children) => m(
         "a",
         {
             href: `/${name}${nestedRoute !== "" ? `/${nestedRoute}` : ""}`,
-            class: route.get() === `/${name}` ? "selected" : "",
+            class: route.get().split("/")[1] === name ? "selected" : "",
             oncreate: route.link
         },
         children || name
@@ -40,7 +40,6 @@ export default class Header {
                 [
                     createHome(),
                     createLink("new", vnode.attrs.currentPage),
-                    createLink("comments"),
                     createLink("show"),
                     createLink("ask"),
                     createLink("jobs")

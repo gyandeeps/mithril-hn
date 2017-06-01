@@ -12,7 +12,7 @@ export default class Pager {
                 m(
                     "a",
                     {
-                        href: vnode.attrs.currentPage > 1 ? `/new/${vnode.attrs.currentPage - 1}` : "",
+                        href: vnode.attrs.currentPage > 1 ? `/${vnode.attrs.routeName}/${vnode.attrs.currentPage - 1}` : "",
                         oncreate: route.link
                     },
                     "Previous"
@@ -25,7 +25,7 @@ export default class Pager {
                 m(
                     "a",
                     {
-                        href: vnode.attrs.currentPage < vnode.attrs.totalPage ? `/new/${vnode.attrs.currentPage + 1}` : "",
+                        href: vnode.attrs.currentPage < vnode.attrs.totalPage ? `/${vnode.attrs.routeName}/${vnode.attrs.currentPage + 1}` : "",
                         oncreate: route.link
                     },
                     "Next"
