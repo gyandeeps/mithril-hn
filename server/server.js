@@ -14,8 +14,20 @@ const app = express();
 app.set("port", process.env.PORT || 5000);
 app.use(express.static(path.resolve(process.cwd(), "./public")));
 
+const allPaths = [
+    "/",
+    "/new",
+    "/new/:id",
+    "/show",
+    "/show/:id",
+    "/ask",
+    "/ask/:id",
+    "/jobs",
+    "/jobs/:id"
+];
+
 // main/homepage
-app.get(["/", "/new/:id"], (req, res) => {
+app.get(allPaths, (req, res) => {
     res.sendFile(path.join(process.cwd(), "./public/index.html"));
 });
 

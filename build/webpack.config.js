@@ -44,10 +44,10 @@ module.exports = () => {
                                         },
                                         "modules": false
                                     }],
-                                    //["babili"]
+                                    ["babili"]
                                 ],
                                 plugins: [
-
+                                    //"mopt"
                                 ]
                             }
                         }
@@ -61,13 +61,13 @@ module.exports = () => {
         },
         plugins: [
             extractCSS,
-            // new webpack.optimize.UglifyJsPlugin({
-            //     compress: {
-            //         warnings: false
-            //     },
-            //     mangle: false,
-            //     minimize: true
-            // })
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false
+                },
+                mangle: true,
+                minimize: true
+            })
         ],
         stats: {
             // Nice colored output
