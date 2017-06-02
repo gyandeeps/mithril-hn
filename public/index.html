@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    <div id="app">Mithril HN App</div>
+    <div id="app">Loading..</div>
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("/service-worker.js")
@@ -36,7 +36,7 @@
                     console.error("Error during service worker registration:", e);
                 });
         } else {
-            console.log('service worker is not supported');
+            console.log("service worker is not supported");
         }
     </script>
     <script type="application/javascript" src="/app.js"></script>

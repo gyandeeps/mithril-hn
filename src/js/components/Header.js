@@ -20,7 +20,8 @@ const createLink = (name, nestedRoute = "", children) => m(
 const createHome = () => createLink("", "", m(
     "img",
     {
-        src: "https://avatars1.githubusercontent.com/u/19475707?v=3&s=30"
+        src: "/img/logo-30x30.png",
+        alt: "Mithril icon"
     },
     ""
 ));
