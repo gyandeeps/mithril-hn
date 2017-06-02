@@ -5,8 +5,7 @@
 
 "use strict";
 
-import route from "mithril/route";
-import m from "mithril/hyperscript";
+import m, { route } from "mithril";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import "../less/app.less";

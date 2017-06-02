@@ -1,4 +1,4 @@
-import m from "mithril/hyperscript";
+import m from "mithril";
 
 export default class Item {
     view(vnode) {

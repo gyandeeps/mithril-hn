@@ -47,7 +47,7 @@ module.exports = () => {
                                     ["babili"]
                                 ],
                                 plugins: [
-                                    //"mopt"
+                                    "mopt"
                                 ]
                             }
                         }

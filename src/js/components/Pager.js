@@ -1,5 +1,4 @@
-import m from "mithril/hyperscript";
-import route from "mithril/route";
+import m, { route } from "mithril";
 
 export default class Pager {
     view(vnode) {

@@ -1,5 +1,4 @@
-import m from "mithril/hyperscript";
-import { redraw } from "mithril/redraw";
+import m, { redraw } from "mithril";
 import Item from "./Item";
 
 export default class DataGrid {

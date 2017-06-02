@@ -1,5 +1,4 @@
-import m from "mithril/hyperscript";
-import route from "mithril/route";
+import m, { route } from "mithril";
 import DataGrid from "./DataGrid";
 import Pager from "./Pager";
 import * as dataFetch from "../data/fetch-data";
