@@ -23,7 +23,7 @@ export default class Pager {
                 m(
                     "a",
                     {
-                        className: `mithril-Pager-page-arrow ${vnode.attrs.currentPage > 1 ? "" : "mithril-Pager-page-arrow--disabled"}`,
+                        className: "mithril-Pager-page-arrow " + (vnode.attrs.currentPage > 1 ? "" : "mithril-Pager-page-arrow--disabled"), // mopt issue #59
                         href: vnode.attrs.currentPage > 1 ? `/${vnode.attrs.routeName}/${vnode.attrs.currentPage - 1}` : "",
                         oncreate: route.link
                     },
@@ -39,7 +39,7 @@ export default class Pager {
                 m(
                     "a",
                     {
-                        className: `mithril-Pager-page-arrow ${vnode.attrs.currentPage < vnode.attrs.totalPage ? "" : "mithril-Pager-page-arrow--disabled"}`,
+                        className: "mithril-Pager-page-arrow " + (vnode.attrs.currentPage < vnode.attrs.totalPage ? "" : "mithril-Pager-page-arrow--disabled"),  // mopt issue #59
                         href: vnode.attrs.currentPage < vnode.attrs.totalPage ? `/${vnode.attrs.routeName}/${vnode.attrs.currentPage + 1}` : "",
                         oncreate: route.link
                     },
