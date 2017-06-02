@@ -10,8 +10,23 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import "../less/app.less";
 
+/**
+ * Parses the route to return the just the main route name
+ * Default it returns new as its the default route
+ * @returns {string} route name
+ * @private
+ */
+const getParsedRouteName = () => route.get().split("/")[1] || "new";
+
 class App {
+    /**
+     * Mithril view
+     * @param {object} vnode - standrd mithril view method
+     * @returns {object} mithril vdom
+     */
     view(vnode) {
+        const routeName = getParsedRouteName();
+
         return m(
             "div",
             {
@@ -19,10 +34,12 @@ class App {
             },
             [
                 m(Header, {
-                    currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1
+                    currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1,
+                    routeName
                 }),
                 m(Body, {
-                    currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1
+                    currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1,
+                    routeName
                 })
             ]
         );

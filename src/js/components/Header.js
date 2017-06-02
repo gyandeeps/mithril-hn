@@ -1,6 +1,22 @@
+/**
+ * @fileoverview Header UI is drawn by this module
+ * @author Gyandeep Singh
+ */
+
+"use strict";
+
 import m, { route } from "mithril/index";
 
-const createLink = (name, nestedRoute = "", children) => m(
+/**
+ * Creates the link using li for each type of route
+ * @param {string} currentRouteName - current route name of the page
+ * @param {string} routeName - name of the route
+ * @param {string} [nestedRoute=""] - nested route
+ * @param {object} [children] - optional children to render
+ * @returns {object} vdom for route link
+ * @private
+ */
+const createLink = (currentRouteName, routeName, nestedRoute = "", children) => m(
     "li",
     {
         class: "mithril-nav-item"
@@ -8,15 +24,21 @@ const createLink = (name, nestedRoute = "", children) => m(
     m(
         "a",
         {
-            href: `/${name}${nestedRoute !== "" ? `/${nestedRoute}` : ""}`,
-            class: route.get().split("/")[1] === name ? "selected" : "",
+            href: `/${routeName}${nestedRoute !== "" ? `/${nestedRoute}` : ""}`,
+            class: currentRouteName === routeName ? "selected" : "",
             oncreate: route.link
         },
-        children || name
+        children || routeName
     )
 );
 
-const createHome = () => createLink("", "", m(
+/**
+ * Creates the link for the home icon on the header
+ * @param {string} currentRouteName - current route name of the page
+ * @returns {object} vdom for iconheader item
+ * @private
+ */
+const createHome = (currentRouteName) => createLink(currentRouteName, "", "", m(
     "img",
     {
         src: "/img/logo-30x30.png",
@@ -26,6 +48,11 @@ const createHome = () => createLink("", "", m(
 ));
 
 export default class Header {
+    /**
+     * Mithril view
+     * @param {object} vnode - standrd mithril view method
+     * @returns {object} mithril vdom
+     */
     view(vnode) {
         return m(
             "nav",
@@ -38,11 +65,11 @@ export default class Header {
                     class: "mithril-nav"
                 },
                 [
-                    createHome(),
-                    createLink("new", vnode.attrs.currentPage),
-                    createLink("show"),
-                    createLink("ask"),
-                    createLink("jobs")
+                    createHome(vnode.attrs.routeName),
+                    createLink(vnode.attrs.routeName, "new", vnode.attrs.currentPage),
+                    createLink(vnode.attrs.routeName, "show"),
+                    createLink(vnode.attrs.routeName, "ask"),
+                    createLink(vnode.attrs.routeName, "jobs")
                 ]
             )
         );

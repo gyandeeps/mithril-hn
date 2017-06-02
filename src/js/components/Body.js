@@ -1,50 +1,52 @@
-import m, { route } from "mithril/index";
+/**
+ * @fileoverview Body UI is drawn by this module
+ * @author Gyandeep Singh
+ */
+
+"use strict";
+
+import m from "mithril/index";
 import DataGrid from "./DataGrid";
 import Pager from "./Pager";
 import * as dataFetch from "../data/fetch-data";
 
-const getDataByRoute = (routeName) => {
-    switch(routeName) {
-        case "new":
-            return dataFetch.getNew;
-
-        case "ask":
-            return dataFetch.getAsk;
-
-        case "show":
-            return dataFetch.getShow;
-
-         case "jobs":
-            return dataFetch.getJobs;
-
-         default:
-               return dataFetch.getNew;
-    }
+const dataFetchToRouteMap = {
+    new: dataFetch.getNew,
+    ask: dataFetch.getAsk,
+    show: dataFetch.getShow,
+    jobs: dataFetch.getJobs
 };
 
-const getTotalPageByRoute = (routeName) => {
-    switch(routeName) {
-        case "new":
-            return 17;
-
-        case "ask":
-        case "show":
-            return 3;
-
-        case "jobs":
-            return 1;
-
-         default:
-               return 5;
-    }
+const totalPagesToRouteMap = {
+    new: 15,
+    ask: 3,
+    show: 3,
+    jobs: 1
 };
 
-const getParsedRouteName = () => route.get().split("/")[1] || "new";
+/**
+ * Gets the data retrieval function based on route
+ * @param {string} routeName - route name in context
+ * @returns {Function} Data fetch function
+ * @private
+ */
+const getDataByRoute = (routeName) => dataFetchToRouteMap[routeName] || dataFetch.getNew;
+
+/**
+ * Gets the total page numbers based on route
+ * @param {string} routeName - route name in context
+ * @returns {number} total number of pages
+ * @private
+ */
+const getTotalPageByRoute = (routeName) => totalPagesToRouteMap[routeName] || 5;
 
 export default class Body {
+    /**
+     * Mithril view
+     * @param {object} vnode - standrd mithril view method
+     * @returns {object} mithril vdom
+     */
     view(vnode) {
-        const routeName = getParsedRouteName();
-
         return m(
             "div",
             {
@@ -52,14 +54,14 @@ export default class Body {
             },
             [
                 m(Pager, {
-                    routeName,
+                    routeName: vnode.attrs.routeName,
                     currentPage: vnode.attrs.currentPage,
-                    totalPage: getTotalPageByRoute(routeName)
+                    totalPage: getTotalPageByRoute(vnode.attrs.routeName)
                 }),
                 m(DataGrid, {
-                    routeName,
+                    routeName: vnode.attrs.routeName,
                     currentPage: vnode.attrs.currentPage,
-                    fetchData: getDataByRoute(routeName)
+                    fetchData: getDataByRoute(vnode.attrs.routeName)
                 })
             ]
         );

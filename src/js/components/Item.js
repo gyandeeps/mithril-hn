@@ -1,6 +1,18 @@
+/**
+ * @fileoverview Each Item UI is drawn by this module
+ * @author Gyandeep Singh
+ */
+
+"use strict";
+
 import m from "mithril/index";
 
 export default class Item {
+    /**
+     * Mithril view
+     * @param {object} vnode - standrd mithril view method
+     * @returns {object} mithril vdom
+     */
     view(vnode) {
         return m(
             "article",
@@ -53,22 +65,22 @@ export default class Item {
                                 m(
                                     "span",
                                     {},
-                                    m(
-                                        "a",
-                                        {
-                                            class: "mithril-Item-comment",
-                                            href: vnode.attrs.link
-                                        },
-                                        [
-                                            " | ",
+                                    [
+                                        " | ",
+                                        m(
+                                            "a",
+                                            {
+                                                class: "mithril-Item-comment",
+                                                href: vnode.attrs.link
+                                            },
                                             `${vnode.attrs.comments} comments`
-                                        ]
-                                    )
+                                        )
+                                    ]
                                 )
                             ]
                         )
                     ]
-                ),
+                )
             ]
         );
     }
