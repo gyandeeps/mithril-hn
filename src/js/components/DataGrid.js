@@ -2,7 +2,7 @@ import m from "mithril/hyperscript";
 import { redraw } from "mithril/redraw";
 import Item from "./Item";
 
-export default class New {
+export default class DataGrid {
     constructor() {
         this.items = [];
     }

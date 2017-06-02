@@ -1,6 +1,6 @@
 import m from "mithril/hyperscript";
 import route from "mithril/route";
-import New from "./New";
+import DataGrid from "./DataGrid";
 import Pager from "./Pager";
 import * as dataFetch from "../data/fetch-data";
 
@@ -57,7 +57,7 @@ export default class Body {
                     currentPage: vnode.attrs.currentPage,
                     totalPage: getTotalPageByRoute(routeName)
                 }),
-                m(New, {
+                m(DataGrid, {
                     routeName,
                     currentPage: vnode.attrs.currentPage,
                     fetchData: getDataByRoute(routeName)
