@@ -1,4 +1,4 @@
-import { request } from "mithril/request";
+import { request } from "mithril/index";
 
 export const getNew = (id = 1) => request({
     type: "GET",
