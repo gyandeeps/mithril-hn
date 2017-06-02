@@ -5,7 +5,7 @@
 
 "use strict";
 
-import m, { route } from "mithril";
+import m, { route } from "mithril/index";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import "../less/app.less";
@@ -18,7 +18,6 @@ class App {
                 class: "mithril-hn"
             },
             [
-
                 m(Header, {
                     currentPage: vnode.attrs.id ? parseInt(vnode.attrs.id) : 1
                 }),

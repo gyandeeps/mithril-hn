@@ -1,4 +1,4 @@
-import m from "mithril";
+import m from "mithril/index";
 
 export default class Item {
     view(vnode) {

@@ -1,4 +1,4 @@
-import m, { redraw } from "mithril";
+import m from "mithril/index";
 import Item from "./Item";
 
 export default class DataGrid {
@@ -10,8 +10,6 @@ export default class DataGrid {
         fetchFunc(this.currentPage)
             .then((data) => {
                 this.items = data;
-                this.newData = true;
-                redraw();
             });
     }
 

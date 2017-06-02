@@ -1,4 +1,4 @@
-import m, { route } from "mithril";
+import m, { route } from "mithril/index";
 import DataGrid from "./DataGrid";
 import Pager from "./Pager";
 import * as dataFetch from "../data/fetch-data";

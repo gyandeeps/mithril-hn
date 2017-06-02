@@ -1,4 +1,4 @@
-import m, { route } from "mithril";
+import m, { route } from "mithril/index";
 
 const createLink = (name, nestedRoute = "", children) => m(
     "li",
