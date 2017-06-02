@@ -19,13 +19,13 @@ import m, { route } from "mithril/index";
 const createLink = (currentRouteName, routeName, nestedRoute = "", children) => m(
     "li",
     {
-        class: "mithril-nav-item"
+        className: "mithril-nav-item"
     },
     m(
         "a",
         {
             href: `/${routeName}${nestedRoute !== "" ? `/${nestedRoute}` : ""}`,
-            class: currentRouteName === routeName ? "selected" : "",
+            className: currentRouteName === routeName ? "selected" : "",
             oncreate: route.link
         },
         children || routeName
@@ -57,12 +57,12 @@ export default class Header {
         return m(
             "nav",
             {
-                class: "mithril-header"
+                className: "mithril-header"
             },
             m(
                 "ol",
                 {
-                    class: "mithril-nav"
+                    className: "mithril-nav"
                 },
                 [
                     createHome(vnode.attrs.routeName),

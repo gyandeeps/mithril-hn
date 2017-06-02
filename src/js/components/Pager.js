@@ -17,13 +17,13 @@ export default class Pager {
         return m(
             "p",
             {
-                class: "mithril-Pager"
+                className: "mithril-Pager"
             },
             [
                 m(
                     "a",
                     {
-                        class: `mithril-Pager-page-arrow ${vnode.attrs.currentPage > 1 ? "" : "mithril-Pager-page-arrow--disabled"}`,
+                        className: `mithril-Pager-page-arrow ${vnode.attrs.currentPage > 1 ? "" : "mithril-Pager-page-arrow--disabled"}`,
                         href: vnode.attrs.currentPage > 1 ? `/${vnode.attrs.routeName}/${vnode.attrs.currentPage - 1}` : "",
                         oncreate: route.link
                     },
@@ -32,14 +32,14 @@ export default class Pager {
                 m(
                     "span",
                     {
-                        class: "mithril-Pager-page-num"
+                        className: "mithril-Pager-page-num"
                     },
                     `${vnode.attrs.currentPage}/${vnode.attrs.totalPage}`
                 ),
                 m(
                     "a",
                     {
-                        class: `mithril-Pager-page-arrow ${vnode.attrs.currentPage < vnode.attrs.totalPage ? "" : "mithril-Pager-page-arrow--disabled"}`,
+                        className: `mithril-Pager-page-arrow ${vnode.attrs.currentPage < vnode.attrs.totalPage ? "" : "mithril-Pager-page-arrow--disabled"}`,
                         href: vnode.attrs.currentPage < vnode.attrs.totalPage ? `/${vnode.attrs.routeName}/${vnode.attrs.currentPage + 1}` : "",
                         oncreate: route.link
                     },

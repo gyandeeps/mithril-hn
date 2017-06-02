@@ -61,7 +61,7 @@ export default class DataGrid {
         return m(
             "div",
             {
-                class: "mithril-New",
+                className: "mithril-New",
                 key: vnode.attrs.routeName
             },
             this.items.map((item, id) => m(Item, {

@@ -17,21 +17,21 @@ export default class Item {
         return m(
             "article",
             {
-                class: "mithril-Item",
+                className: "mithril-Item",
                 key: vnode.attrs.key
             },
             [
                 m(
                     "span",
                     {
-                        class: "mithril-Item-id"
+                        className: "mithril-Item-id"
                     },
                     vnode.attrs.id
                 ),
                 m(
                     "div",
                     {
-                        class: "mithril-Item-body"
+                        className: "mithril-Item-body"
                     },
                     [
                         m(
@@ -40,7 +40,7 @@ export default class Item {
                             m(
                                 "a",
                                 {
-                                    class: "mithril-Item-link",
+                                    className: "mithril-Item-link",
                                     href: vnode.attrs.link
                                 },
                                 vnode.attrs.title
@@ -49,14 +49,14 @@ export default class Item {
                         m(
                             "p",
                             {
-                                class: "mithril-Item-footer"
+                                className: "mithril-Item-footer"
                             },
                             [
                                 vnode.attrs.points ? ` ${vnode.attrs.points} points ` : null,
                                 vnode.attrs.user ? m(
                                     "a",
                                     {
-                                        class: "mithril-Item-user",
+                                        className: "mithril-Item-user",
                                         href: vnode.attrs.user
                                     },
                                     vnode.attrs.user
@@ -70,7 +70,7 @@ export default class Item {
                                         m(
                                             "a",
                                             {
-                                                class: "mithril-Item-comment",
+                                                className: "mithril-Item-comment",
                                                 href: vnode.attrs.link
                                             },
                                             `${vnode.attrs.comments} comments`

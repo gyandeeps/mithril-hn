@@ -30,7 +30,7 @@ class App {
         return m(
             "div",
             {
-                class: "mithril-hn"
+                className: "mithril-hn"
             },
             [
                 m(Header, {

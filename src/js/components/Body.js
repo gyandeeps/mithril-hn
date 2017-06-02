@@ -50,7 +50,7 @@ export default class Body {
         return m(
             "div",
             {
-                class: "mithril-body"
+                className: "mithril-body"
             },
             [
                 m(Pager, {
