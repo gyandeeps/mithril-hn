@@ -17,7 +17,7 @@ module.exports = {
         "./src/js/app.js"
     ],
     output: {
-        path: path.join(process.cwd(), "public"),
+        path: path.join(process.cwd(), "dist"),
         filename: "app.js",
         publicPath: ""
     },

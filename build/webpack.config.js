@@ -8,8 +8,10 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const extractCSS = new ExtractTextPlugin("./app.css");
+const extractCSS = new ExtractTextPlugin("./[name]-[chunkhash].css");
 
 module.exports = () => {
     return {
@@ -17,8 +19,8 @@ module.exports = () => {
             "app": "./src/js/app.js"
         },
         output: {
-            path: path.resolve(__dirname, "../public"),
-            filename: `./[name].js`
+            path: path.resolve(__dirname, "../dist"),
+            filename: `./[name]-[chunkhash].js`
         },
         resolve: {
             modules: [
@@ -61,13 +63,34 @@ module.exports = () => {
         },
         plugins: [
             extractCSS,
+            new HtmlWebpackPlugin({
+                filename: "index.html",
+                template: "public/index.ejs"
+            }),
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
                     warnings: false
                 },
                 mangle: true,
                 minimize: true
-            })
+            }),
+            new CopyWebpackPlugin(
+                [
+                    {
+                        from: "./public/manifest.json"
+                    },
+                    {
+                        from: "./public/service-worker.js"
+                    },
+                    {
+                        from: "./public/img",
+                        to: "img"
+                    }
+                ],
+                {
+                    copyUnmodified: true
+                }
+            )
         ],
         stats: {
             // Nice colored output

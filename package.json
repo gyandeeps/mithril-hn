@@ -4,7 +4,8 @@
   "description": "HN using MithrilJs",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./build/webpack.config.js",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && webpack --config ./build/webpack.config.js",
     "dev": "node ./build/webpack-dev-server.js",
     "start": "node ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,8 +33,10 @@
     "babel-loader": "^7.0.0",
     "babel-preset-babili": "^0.1.2",
     "babel-preset-env": "^1.5.1",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
     "mopt": "^5.0.2",

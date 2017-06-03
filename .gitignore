@@ -58,5 +58,4 @@ typings/
 .env
 
 .idea
-/public/app.js
-/public/app.css
+dist

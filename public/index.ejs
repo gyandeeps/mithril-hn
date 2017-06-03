@@ -22,13 +22,13 @@
 
     <link rel="icon" type="image/png" sizes="144x144" href="img/logo-144x144.png">
     <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="img/logo-144x144.png">
-    <link rel="stylesheet" href="/app.css">
+    <base href="/">
 </head>
 <body>
     <div id="app">Loading..</div>
     <script>
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("/service-worker.js")
+            navigator.serviceWorker.register("/service-worker.js", { scope: "./" })
                 .then(function (registration) {
                     registration.onupdatefound = function () {
                         if (navigator.serviceWorker.controller) {
@@ -52,6 +52,5 @@
             console.log("service worker is not supported");
         }
     </script>
-    <script type="application/javascript" src="/app.js"></script>
 </body>
 </html>

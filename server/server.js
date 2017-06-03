@@ -10,9 +10,10 @@ const path = require("path");
 const { fetchItem, fetchNews } = require("./fetch-data");
 
 const app = express();
+const indexHtmlFile = path.join(process.cwd(), "./dist/index.html");
 
 app.set("port", process.env.PORT || 5000);
-app.use(express.static(path.resolve(process.cwd(), "./public")));
+app.use(express.static(path.resolve(process.cwd(), "./dist")));
 
 const allPaths = [
     "/",
@@ -28,7 +29,7 @@ const allPaths = [
 
 // main/homepage
 app.get(allPaths, (req, res) => {
-    res.sendFile(path.join(process.cwd(), "./public/index.html"));
+    res.sendFile(indexHtmlFile);
 });
 
 app.get("/api/new", (req, res) =>
