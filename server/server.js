@@ -6,6 +6,7 @@
 "use strict";
 
 const express = require("express");
+const compression = require("compression");
 const path = require("path");
 const { fetchItem, fetchNews } = require("./fetch-data");
 
@@ -13,6 +14,7 @@ const app = express();
 const indexHtmlFile = path.join(process.cwd(), "./dist/index.html");
 
 app.set("port", process.env.PORT || 5000);
+app.use(compression());
 app.use(express.static(path.resolve(process.cwd(), "./dist")));
 
 const allPaths = [
@@ -32,14 +34,14 @@ app.get(allPaths, (req, res) => {
     res.sendFile(indexHtmlFile);
 });
 
-app.get("/api/new", (req, res) =>
-    fetchNews(req.query.page)
-        .then((data) => res.json(data))
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send(err.message);
-        })
-);
+// app.get("/api/new", (req, res) =>
+//     fetchNews(req.query.page)
+//         .then((data) => res.json(data))
+//         .catch((err) => {
+//             console.error(err);
+//             res.status(500).send(err.message);
+//         })
+// );
 
 app.listen(app.get("port"), (err) => {
     if (err) {
