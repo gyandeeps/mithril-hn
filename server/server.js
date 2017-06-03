@@ -15,7 +15,7 @@ const indexHtmlFile = path.join(process.cwd(), "./dist/index.html");
 
 app.set("port", process.env.PORT || 5000);
 app.use(compression());
-app.use(express.static(path.resolve(process.cwd(), "./dist")), { maxAge: 172800000 }); // 2 days
+app.use(express.static(path.resolve(process.cwd(), "./dist"), { maxAge: 172800000 })); // 2 days
 
 const allPaths = [
     "/",
