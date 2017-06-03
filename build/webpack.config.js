@@ -80,9 +80,6 @@ module.exports = () => {
                         from: "./public/manifest.json"
                     },
                     {
-                        from: "./public/service-worker.js"
-                    },
-                    {
                         from: "./public/img",
                         to: "img"
                     }
