@@ -7,6 +7,8 @@
 
 import { request } from "mithril/index";
 
+const serviceUrl = "https://node-hnapi.herokuapp.com/";
+
 /**
  * Gets data for news
  * @param {int} [id = 1] - page numbers
@@ -14,7 +16,7 @@ import { request } from "mithril/index";
  */
 export const getNew = (id = 1) => request({
     type: "GET",
-    url: `https://node-hnapi.herokuapp.com/news?page=${id}`
+    url: `${serviceUrl}news?page=${id}`
 });
 
 /**
@@ -24,7 +26,7 @@ export const getNew = (id = 1) => request({
  */
 export const getShow = (id = 1) => request({
     type: "GET",
-    url: `https://node-hnapi.herokuapp.com/show?page=${id}`
+    url: `${serviceUrl}show?page=${id}`
 });
 
 /**
@@ -34,7 +36,7 @@ export const getShow = (id = 1) => request({
  */
 export const getAsk = (id = 1) => request({
     type: "GET",
-    url: `https://node-hnapi.herokuapp.com/ask?page=${id}`
+    url: `${serviceUrl}ask?page=${id}`
 });
 
 /**
@@ -44,5 +46,5 @@ export const getAsk = (id = 1) => request({
  */
 export const getJobs = (id = 1) => request({
     type: "GET",
-    url: `https://node-hnapi.herokuapp.com/jobs?page=${id}`
+    url: `${serviceUrl}jobs?page=${id}`
 });
