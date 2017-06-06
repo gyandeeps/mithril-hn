@@ -9,6 +9,7 @@
 
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     devtool: "inline-source-map",
@@ -17,7 +18,7 @@ module.exports = {
         "./src/js/app.js"
     ],
     output: {
-        path: path.join(process.cwd(), "dist"),
+        path: path.join(process.cwd(), "public"),
         filename: "app.js",
         publicPath: ""
     },
@@ -50,4 +51,10 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: "public/index.html"
+        })
+    ]
 };

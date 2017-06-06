@@ -65,7 +65,7 @@ module.exports = () => {
             extractCSS,
             new HtmlWebpackPlugin({
                 filename: "index.html",
-                template: "public/index.ejs"
+                template: "public/index.html"
             }),
             new webpack.optimize.UglifyJsPlugin({
                 compress: {
