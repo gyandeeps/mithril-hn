@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "build": "npm run clean && webpack --config ./build/webpack.config.js && npm run sw-gen",
-    "deploy": "now alias $(now --public) mithril-hn",
+    "deploy": "addr=$(now --public) && now alias $addr mithril-hn",
     "dev": "node ./build/webpack-dev-server.js",
     "start": "node ./server/server.js",
     "sw-gen": "node ./build/sw-generator.js",
