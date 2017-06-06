@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "build": "npm run clean && webpack --config ./build/webpack.config.js && npm run sw-gen",
+    "deploy": "now alias $(now --public) mithril-hn",
     "dev": "node ./build/webpack-dev-server.js",
     "start": "node ./server/server.js",
     "sw-gen": "node ./build/sw-generator.js",
@@ -41,8 +42,8 @@
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
-    "mopt": "^5.0.2",
-    "style-loader": "^0.18.1",
+    "mopt": "^5.1.1",
+    "style-loader": "^0.18.2",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5",
     "workbox-build": "^1.0.1"
