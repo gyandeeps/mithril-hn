@@ -63,6 +63,7 @@ module.exports = () => {
         },
         plugins: [
             extractCSS,
+            new webpack.optimize.ModuleConcatenationPlugin({}),
             new HtmlWebpackPlugin({
                 filename: "index.html",
                 template: "public/index.html"
